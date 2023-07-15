@@ -1,0 +1,36 @@
+{
+  "transactions": [
+    {
+      "hash": "0x0adff2016ee970a78c086258b2ad016d33a772623611dedb6d66719bf09d225f",
+      "transactionType": "CALL",
+      "contractName": null,
+      "contractAddress": "0x779877A7B0D9E8603169DdbD7836e478b4624789",
+      "function": null,
+      "arguments": null,
+      "rpc": "https://eth-sepolia.g.alchemy.com/v2/iPBtgwvjNv19zREWHoSTW9yYA6lJoFnR",
+      "transaction": {
+        "type": "0x02",
+        "from": "0xb1f540756be3c06ebbcac15d701c5477f271a7a0",
+        "to": "0x779877a7b0d9e8603169ddbd7836e478b4624789",
+        "gas": "0x1b43f",
+        "value": "0x0",
+        "data": "0x4000aea00000000000000000000000008103b0a8a00be2ddc778e6e7eaa21791cd36462500000000000000000000000000000000000000000000000029a2241af62c0000000000000000000000000000000000000000000000000000000000000000006000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000e4b",
+        "nonce": "0xf5",
+        "accessList": []
+      },
+      "additionalContracts": [],
+      "isFixedGasLimit": false
+    }
+  ],
+  "receipts": [],
+  "libraries": [],
+  "pending": [
+    "0x0adff2016ee970a78c086258b2ad016d33a772623611dedb6d66719bf09d225f"
+  ],
+  "path": "/home/user/foundry-course/foundry-smart-contract-f23/broadcast/Interactions.s.sol/11155111/run-latest.json",
+  "returns": {},
+  "timestamp": 1689460048,
+  "chain": 11155111,
+  "multi": false,
+  "commit": "01fcfa5"
+}

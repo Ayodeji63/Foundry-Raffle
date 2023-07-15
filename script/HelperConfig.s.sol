@@ -2,19 +2,23 @@
 pragma solidity 0.8.18;
 
 import {Script} from "forge-std/Script.sol";
+import {Test, console} from "forge-std/Test.sol";
 import {VRFCoordinatorV2Mock} from "@chainlink/contracts/src/v0.8/mocks/VRFCoordinatorV2Mock.sol";
+import {LinkToken} from "../test/mocks/LinkToken.sol";
 
 contract HelperConfig is Script {
     struct NetworkConfig {
-        uint entrancFee;
+        uint entranceFee;
         uint interval;
         address vrfCoordinator;
         bytes32 gasLane;
         uint64 subscriptionId;
         uint32 callbackGasLimit;
+        address link;
     }
 
     NetworkConfig public activeNetworkConfig;
+    NetworkConfig public networkConfig;
 
     constructor() {
         if (block.chainid == 11155111) {
@@ -27,12 +31,13 @@ contract HelperConfig is Script {
     function getSepoliaEthConfig() public view returns (NetworkConfig memory) {
         return
             NetworkConfig({
-                entrancFee: 0.01 ether,
+                entranceFee: 0.01 ether,
                 interval: 30,
                 vrfCoordinator: 0x8103B0A8A00be2DDC778e6e7eaa21791Cd364625,
                 gasLane: 0xff8dedfbfa60af186cf3c830acbc32c05aae823045ae5ea7da1e45fbfaba4f92,
-                subscriptionId: 0,
-                callbackGasLimit: 500000
+                subscriptionId: 3659,
+                callbackGasLimit: 500000,
+                link: 0x779877A7B0D9E8603169DdbD7836e478b4624789
             });
     }
 
@@ -49,15 +54,19 @@ contract HelperConfig is Script {
             baseFee,
             gasPriceLink
         );
+        LinkToken link = new LinkToken();
         vm.stopBroadcast();
 
-        NetworkConfig({
-            entrancFee: 0.01 ether,
+        networkConfig = NetworkConfig({
+            entranceFee: 0.01 ether,
             interval: 30,
             vrfCoordinator: address(vrfCoordinatorMock),
             gasLane: 0xff8dedfbfa60af186cf3c830acbc32c05aae823045ae5ea7da1e45fbfaba4f92,
             subscriptionId: 0,
-            callbackGasLimit: 500000
+            callbackGasLimit: 500000,
+            link: address(link)
         });
+
+        return networkConfig;
     }
 }
