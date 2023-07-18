@@ -15,12 +15,13 @@ contract HelperConfig is Script {
         uint64 subscriptionId;
         uint32 callbackGasLimit;
         address link;
-        uint deployerKey;
+        uint256 deployerKey;
     }
 
     NetworkConfig public activeNetworkConfig;
     NetworkConfig public networkConfig;
-    address public const DEFAULT_ANVIL_KEY = 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80
+    uint256 public constant DEFAULT_ANVIL_KEY =
+        0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80;
 
     constructor() {
         if (block.chainid == 11155111) {
@@ -40,7 +41,7 @@ contract HelperConfig is Script {
                 subscriptionId: 3659,
                 callbackGasLimit: 500000,
                 link: 0x779877A7B0D9E8603169DdbD7836e478b4624789,
-                deployerKey: vm.envUint("PRIVATE_KEY");
+                deployerKey: vm.envUint("PRIVATE_KEY")
             });
     }
 
@@ -68,7 +69,7 @@ contract HelperConfig is Script {
             subscriptionId: 0,
             callbackGasLimit: 500000,
             link: address(link),
-            deployerKey: 
+            deployerKey: DEFAULT_ANVIL_KEY
         });
 
         return networkConfig;
